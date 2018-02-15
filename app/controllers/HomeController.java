@@ -3,6 +3,7 @@ package controllers;
 import play.mvc.*;
 
 import views.html.*;
+import views.html.home.home;
 
 /**
  * This controller contains an action to handle HTTP requests
@@ -19,5 +20,13 @@ public class HomeController extends Controller {
     public Result index() {
         return ok(index.render("Your new application is ready."));
     }
+
+    public Result about(String name){
+        return ok(home.render(name));
+    }
+
+
+
+
 
 }
