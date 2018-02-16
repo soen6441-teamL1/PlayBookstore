@@ -1,0 +1,16 @@
+@(bookForm: Form[Book])
+
+@import helper._
+
+@main("Create Book"){
+    <h1>Create Book</h1>
+
+    @helper.form(action = routes.BooksController.postCreate()){
+        @helper.inputText(bookForm("id"))
+        @helper.inputText(bookForm("title"))
+        @helper.inputText(bookForm("price"))
+        @helper.inputText(bookForm("author"))
+
+        <input type="submit" value="Create Book" class="btn btn-primary"/>
+    }
+}

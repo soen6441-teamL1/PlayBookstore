@@ -3,7 +3,7 @@
 # ~~~~
 
 # An example controller showing a sample home page
-GET     /                           controllers.HomeController.index
+GET     /                           controllers.BooksController.getBooks
 # An example controller showing how to use dependency injection
 GET     /count                      controllers.CountController.count
 # An example controller showing how to write asynchronous code
@@ -21,6 +21,6 @@ GET /books              controllers.BooksController.getBooks
 POST /books/create      controllers.BooksController.postCreate
 GET /books/create       controllers.BooksController.getCreate
 GET /books/edit/:id     controllers.BooksController.getEdit(id: Integer)
-PATCH /books/edit/:id   controllers.BooksController.PutEdit(id: Integer)
+PATCH /books/edit       controllers.BooksController.putEdit()
 GET /books/:id          controllers.BooksController.getBook(id: Integer)
-DELETE /books/:id       controllers.BooksController.delete(id: Integer)
+GET /books/delete/:id   controllers.BooksController.delete(id: Integer)
