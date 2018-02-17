@@ -17,10 +17,10 @@ GET /about/:name                          controllers.HomeController.about(name:
 
 # Book Controller
 
-GET /books              controllers.BooksController.getBooks
-POST /books/create      controllers.BooksController.postCreate
-GET /books/create       controllers.BooksController.getCreate
-GET /books/edit/:id     controllers.BooksController.getEdit(id: Integer)
-PATCH /books/edit       controllers.BooksController.putEdit()
-GET /books/:id          controllers.BooksController.getBook(id: Integer)
-GET /books/delete/:id   controllers.BooksController.delete(id: Integer)
+GET /books                  controllers.BooksController.getBooks
+POST /books/create          controllers.BooksController.postCreate
+GET /books/create           controllers.BooksController.getCreate
+GET /books/edit/:id         controllers.BooksController.getEdit(id: Integer)
+PUT /books/edit             controllers.BooksController.putEdit()
+GET /books/:id              controllers.BooksController.getBook(id: Integer)
+DELETE /books/delete/:id    controllers.BooksController.delete(id: Integer)

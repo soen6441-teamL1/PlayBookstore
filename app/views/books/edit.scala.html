@@ -6,12 +6,17 @@
 @main("Edit Book"){
     <h1>Edit Book</h1>
 
-    @helper.form(action = routes.BooksController.putEdit()){
+    @helper.form(action = routes.BooksController.putEdit(), 'id-> "bookUpdateForm"){
 
         @_bookFormFields(bookForm)
 
-        <button class="btn btn-primary" type="submit">
-            <i class="glyphicon glyphicon-edit"></i> Edit Book
-        </button>
+        @*<button class="btn btn-primary" type="submit">*@
+            @*<i class="glyphicon glyphicon-edit"></i> Edit Book*@
+        @*</button>*@
     }
+
+    <button class="btn btn-primary" type="submit" onclick="sendPutRequest('bookUpdateForm', '@routes.BooksController.putEdit()')">
+        <i class="glyphicon glyphicon-edit"></i> Edit Book
+    </button>
+
 }

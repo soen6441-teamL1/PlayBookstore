@@ -10,9 +10,9 @@ import views.html.books.list;
 import views.html.books.create;
 import views.html.books.details;
 import views.html.books.edit;
+import views.html.errors._404;
 
 import java.util.List;
-import java.util.Set;
 
 public class BooksController extends Controller {
 
@@ -32,8 +32,11 @@ public class BooksController extends Controller {
     // HTTP GET specific book
     public Result getBook(Integer id){
         Book book = Book.find.byId(id);
-        if(book == null)
-            return notFound();
+
+        if(book == null){
+            return notFound(_404.render());
+            //return notFound();
+        }
 
         return ok(details.render(book));
     }
@@ -48,11 +51,19 @@ public class BooksController extends Controller {
     public Result postCreate(){
         // Map request to book form object
         Form<Book> bookForm = formFactory.form(Book.class).bindFromRequest();
+
+        if(bookForm.hasErrors()){
+            flash("danger", "Please correct the form below.");
+            return badRequest(create.render(bookForm));
+        }
+
         // Extract book from book form
         Book book = bookForm.get();
 
         // Save into database
         book.save();
+
+        flash("success", "Book saved successfully.");
 
         // Redirect took book list
         return redirect(routes.BooksController.getBooks());
@@ -63,8 +74,11 @@ public class BooksController extends Controller {
 
         Book book = Book.find.byId(id);
 
-        if(book == null)
-            return notFound("Coult not find book with id " + id);
+        if(book == null){
+            //return notFound("Could not find book with id " + id);
+            return notFound(_404.render());
+        }
+
 
         Form<Book> bookForm = formFactory.form(Book.class).fill(book);
         return ok(edit.render(bookForm));
@@ -73,19 +87,31 @@ public class BooksController extends Controller {
     // HTTP PUT update book
     public Result putEdit(){
         Form<Book> bookForm = formFactory.form(Book.class).bindFromRequest();
+
+        if(bookForm.hasErrors()){
+            flash("danger", "please correct the form below.");
+            return badRequest(edit.render(bookForm));
+        }
+
         Book book = bookForm.get();
 
         Book oldBook = Book.find.byId(book.id);
 
-        if(oldBook == null)
+        if(oldBook == null){
+            flash("danger", "Book not found");
             return notFound();
+        }
 
         oldBook.title = book.title;
         oldBook.author = book.author;
         oldBook.price = book.price;
         oldBook.update();
 
-        return redirect(routes.BooksController.getBooks());
+        flash("success", "Book saved successfully.");
+
+        // Front-end js will take care of redirect
+        //return redirect(routes.BooksController.getBooks());
+        return ok();
     }
 
     // HTTP DELETE
@@ -93,11 +119,18 @@ public class BooksController extends Controller {
 
         Book book = Book.find.byId(id);
 
-        if(book == null)
+        if(book == null){
+            flash("danger", "Book not found");
             return notFound();
+        }
+
 
         book.delete();
-        return redirect(routes.BooksController.getBooks());
+        flash("success", "Book deleted");
+
+        // Frontend js will take care of redirect
+        return ok();
+        //return redirect(routes.BooksController.getBooks());
     }
 
 

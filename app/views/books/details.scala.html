@@ -6,5 +6,9 @@
     <p>Author: @book.author</p>
 
     <a class="btn btn-primary" href="@routes.BooksController.getEdit(book.id)">Edit</a>
-    <a class="btn btn-danger" href="@routes.BooksController.delete(book.id)">Delete</a>
+
+    <button class="btn btn-danger" onclick="sendDeleteRequest(
+        '@routes.BooksController.getEdit(book.id)',
+        '@routes.HomeController.index()'
+    )">Delete</button>
 }

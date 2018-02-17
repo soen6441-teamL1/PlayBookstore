@@ -1,8 +1,7 @@
 package models;
 
-import java.util.HashSet;
-import java.util.Set;
 import com.avaje.ebean.Model;
+import play.data.validation.Constraints;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -11,9 +10,17 @@ import javax.persistence.Id;
 public class Book extends Model {
 
     @Id
+    @Constraints.Required
     public Integer id;
+
+    @Constraints.Required
     public String title;
+
+    @Constraints.Min(0)
+    @Constraints.Required
     public Integer price;
+
+    @Constraints.Required
     public String author;
 
     public Book() {
