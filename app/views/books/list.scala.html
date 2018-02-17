@@ -1,12 +1,15 @@
-@(books: Set[Book])
+@(books: List[Book])
 
-@main("All books<"){
+@main("All books"){
     <h1>All books</h1>
     @for(book <- books){
-        <a href="@routes.BooksController.getBook(book.id)">@book.title</a>
+        <a class="btn btn-link" href="@routes.BooksController.getBook(book.id)">@book.title</a>
         <p>Price: @book.price</p>
         <p>Author: @book.author</p>
     }
 
-    <a href="@routes.BooksController.getCreate()">Create New Book</a>
+    <a class="btn btn-success" href="@routes.BooksController.getCreate()">
+        <i class="glyphicon glyphicon-plus"></i> Create Book
+    </a>
+
 }

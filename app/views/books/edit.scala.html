@@ -1,16 +1,17 @@
 @(bookForm: Form[Book])
 
 @import helper._
+@import views.html.books.partials._bookFormFields
 
 @main("Edit Book"){
     <h1>Edit Book</h1>
 
     @helper.form(action = routes.BooksController.putEdit()){
-        @helper.inputText(bookForm("id"))
-        @helper.inputText(bookForm("title"))
-        @helper.inputText(bookForm("price"))
-        @helper.inputText(bookForm("author"))
 
-        <input type="submit" value="Create Book" class="btn btn-primary"/>
+        @_bookFormFields(bookForm)
+
+        <button class="btn btn-primary" type="submit">
+            <i class="glyphicon glyphicon-edit"></i> Edit Book
+        </button>
     }
 }
