@@ -24,3 +24,7 @@ GET /books/edit/:id         controllers.BooksController.getEdit(id: Integer)
 PUT /books/edit             controllers.BooksController.putEdit()
 GET /books/:id              controllers.BooksController.getBook(id: Integer)
 DELETE /books/delete/:id    controllers.BooksController.delete(id: Integer)
+
+
+GET /api/test       controllers.ApiController.getJson
+POST /api/test      controllers.ApiController.postJson

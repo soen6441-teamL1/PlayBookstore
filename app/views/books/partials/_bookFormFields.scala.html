@@ -1,6 +1,7 @@
 @(bookForm: Form[Book])
+    @import helper._
 
-@helper.inputText(bookForm("id"), 'class -> "form-control")
-@helper.inputText(bookForm("title"), 'class -> "form-control")
-@helper.inputText(bookForm("price"), 'class -> "form-control")
-@helper.inputText(bookForm("author"), 'class -> "form-control")
+    @helper.inputText(bookForm("id"), 'class -> "form-control")
+    @helper.inputText(bookForm("title"), 'class -> "form-control")
+    @helper.inputText(bookForm("price"), 'class -> "form-control")
+    @helper.inputText(bookForm("author"), 'class -> "form-control")

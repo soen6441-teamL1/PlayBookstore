@@ -110,8 +110,8 @@ public class BooksController extends Controller {
         flash("success", "Book saved successfully.");
 
         // Front-end js will take care of redirect
-        //return redirect(routes.BooksController.getBooks());
         return ok();
+        //return redirect(routes.BooksController.getBooks());
     }
 
     // HTTP DELETE

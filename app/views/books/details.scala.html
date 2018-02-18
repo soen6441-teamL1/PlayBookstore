@@ -8,7 +8,7 @@
     <a class="btn btn-primary" href="@routes.BooksController.getEdit(book.id)">Edit</a>
 
     <button class="btn btn-danger" onclick="sendDeleteRequest(
-        '@routes.BooksController.getEdit(book.id)',
-        '@routes.HomeController.index()'
+        '@routes.BooksController.delete(book.id)',
+        '@routes.BooksController.getBooks()'
     )">Delete</button>
 }

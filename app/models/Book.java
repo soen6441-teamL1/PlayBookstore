@@ -11,6 +11,7 @@ public class Book extends Model {
 
     @Id
     @Constraints.Required
+    @Constraints.Min(0)
     public Integer id;
 
     @Constraints.Required
@@ -34,6 +35,5 @@ public class Book extends Model {
     }
 
     public static Finder<Integer, Book> find = new Finder<>(Book.class);
-
 
 }
